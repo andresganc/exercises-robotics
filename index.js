@@ -4,21 +4,52 @@ const app = express();                                  // Almaceno Express en u
 const express_graphql = require('express-graphql');     // Requiero Express-GraphQL
 const { buildSchema } = require('graphql');             // Requiero el Modulo de GraphQL que sirve para almacenar y mostrar el esquema de una base de datos
 
+const {courses} = require('./data.json');
+console.log (courses);
+
 // Almacenamos en la constante
 const Schema = buildSchema(`
     type Query{
-        message: String
+        course(id: Int!): Course
+        courses(topic: String): [Course]
+    }
+
+    type Course {
+        id: Int
+        title: String
+        description: String
+        author: String
+        topic: String
+        url: String
+
     }
 `);                           
 
+let getCourse = (args) => {
+    let id = args.id;
+    return courses.filter(course => {
+        return course.id == id;
+    }) [0]
+}
+
+let getCourses = (args) => {
+    if (args.topic){
+        let topic = args.topic;
+        return courses.filter(course => course.topic === topic);
+    } else {
+        return courses;
+    }
+};
+
 // Para asignar permisos de consulta
 const Root = {                                          
-    message: () => "Hola"
+    course: getCourse,
+    courses: getCourses
 }
 
 app.use('/graphql', express_graphql({
     schema: Schema,
-    root: Root,
+    rootValue : Root,
     graphiql: true              // Aplicacion grafica para hacer consultas a la base de datos - La activamos
 }));
 

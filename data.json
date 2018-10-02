@@ -1,0 +1,25 @@
+{
+    "courses":[
+        {
+            "id": 1,
+            "title": "Nodejs Course",
+            "author": "Andres Giraldo",
+            "topic": "Javascript",
+            "url": "http://newsoftcomputer.com"
+        },
+        {
+            "id": 2,
+            "title": "React",
+            "author": "Andres Giraldo",
+            "topic": "React",
+            "url": "http://newsoftcomputer.com"
+        },
+        {
+            "id": 3,
+            "title": "GraphQL",
+            "author": "Andres Giraldo",
+            "topic": "Graphql",
+            "url": "http://newsoftcomputer.com"
+        }
+    ]
+}
