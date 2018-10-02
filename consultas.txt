@@ -1,0 +1,36 @@
+query getSingleCourse($courseID: Int!){
+  course(id: $courseID){
+    title
+    author
+    description
+    topic
+    url
+  }
+}
+
+
+Query Variables
+
+{
+    "courseID": 1
+}
+
+
+----------------------------------------------
+
+query getCourses($courseTopic: String!){
+    courses(topic: $courseTopic){
+        title
+        description
+        author
+        topic
+        url
+    }
+}
+
+
+Query Variables
+
+{
+    "courseTopic": "Javascript"
+}
