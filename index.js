@@ -7,7 +7,7 @@ const { buildSchema } = require('graphql');             // Requiero el Modulo de
 const {courses} = require('./data.json');
 console.log (courses);
 
-// Almacenamos en la constante
+// Creamos los Esquemas y las Almacenamos en la constante Schema
 const Schema = buildSchema(`
     type Query{
         course(id: Int!): Course
