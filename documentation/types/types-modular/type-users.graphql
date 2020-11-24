@@ -1,0 +1,72 @@
+
+    # ==================== TYPES (CONSULTAS) ================
+
+    """ Type User (Consultas Users)"""
+    type User {
+        id: ID
+        created_at: String
+        name: String
+        lastname: String
+        email: String
+        password: String
+        image: String
+        status: Boolean
+    }
+
+    
+     # ==================== ARRAYS ================
+    """ Array para emails """
+    type Email {
+        email1: String
+    }
+
+
+    # ==================== CATEGORIAS ================
+
+
+     
+    """ ============== CONSULTAS USERS ============== """
+    type Query {
+        # Consultar todos los users
+        getUsers: [User]
+        # Consultar Users con un limite de registros
+        getUsersLimite(limite: Int): [User]
+        # Consultar un solo User desde su ID
+        getUserID(id: ID) : User
+    }
+
+
+
+
+    # ============== MUTATIONS (CREAR. ACTUALIZAR, ELIMINAR) ==============
+
+    """ Cliente Input: Campos para crear cliente nuevo"""
+    input UserInput {
+        id: ID
+        created_at: String
+        name: String
+        lastname: String
+        email: String
+        password: String
+        image: String
+        status: Boolean
+    }
+
+
+    # ==================== ARRAYS ================
+    """ Array para emails """
+    input EmailInput {
+        email1: String
+    }
+
+    
+    """ Mutation User"""
+    type Mutation {
+        """ Te permite crear nuevos users"""
+        # NombreResolver(Input con datos) : Valor que retorna
+        crearUser(input: UserInput): User
+        # Actualizar User
+        editarUser(input: UserInput): User
+        # Eliminar User
+        eliminarUser(id: ID!) : String
+    }
