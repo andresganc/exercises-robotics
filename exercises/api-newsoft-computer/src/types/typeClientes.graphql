@@ -1,0 +1,149 @@
+    # ==================================================================================================================
+    # modelClientesSchema
+    # ==================================================================================================================
+
+    # ==================== TYPES (CONSULTAS) ================
+
+    """ Type Clientes (Consultas Clientes)"""
+    type Clientes {
+        id: ID
+        created_at: String
+        documenttype: String
+        document: String
+        company: String
+        phones: String
+        emails: String
+        web: String
+        address: String
+        bloq_pta: String
+        cp: String
+        city: String
+        state: String
+        country: String
+        currency: String
+        language: String
+        payment_terms: String
+        notes: String
+        notes_private: String
+        company_size: String
+        industry: String
+        contacts: [Contact]
+        status: String
+    }
+
+    
+     # ==================== ARRAYS ================
+    """ Array para emails """
+    type Email {
+        email1: String
+    }
+
+    """ Array para emails """
+    type Contact {
+        documenttype: String
+        document: String
+        name: String
+        lastname: String
+        phones: String
+        email: String
+        address: String
+        state: String
+        country: String
+        notes: String
+    }
+
+
+    # ==================== CATEGORIAS ================
+
+    """ CATEGORIA: TipoCliente """
+    enum TipoCliente {
+        BASICO
+        PREMIUM
+    }
+
+
+
+     
+    """ ============== CONSULTAS USERS ============== """
+    type Query {
+        # Consultar todos los clientes
+        getClientes: [Clientes]
+        # Consultar Users con un limite de registros
+        getClientesLimite(limite: Int): [Clientes]
+        # Consultar un solo Cliente desde su ID
+        getClienteID(id: ID) : Clientes
+    }
+
+
+
+
+    # ============== MUTATIONS (CREAR. ACTUALIZAR, ELIMINAR) ==============
+
+    """ Cliente Input: Campos para crear cliente nuevo"""
+    input ClienteInput {
+        id: ID
+        created_at: String
+        documenttype: String
+        document: String
+        company: String
+        phones: String
+        emails: String
+        web: String
+        address: String
+        bloq_pta: String
+        cp: String
+        city: String
+        state: String
+        country: String
+        currency: String
+        language: String
+        payment_terms: String
+        notes: String
+        notes_private: String
+        company_size: String
+        industry: String
+        contacts: [ContactInput]
+        status: String
+    }
+
+
+    # ==================== ARRAYS ================
+    """ Array para emails """
+    input EmailInput {
+        email1: String
+    }
+
+    """ Array para emails """
+    input ContactInput {
+        documenttype: String
+        document: String
+        name: String
+        lastname: String
+        phones: String
+        email: String
+        address: String
+        state: String
+        country: String
+        notes: String
+    }
+
+
+
+    
+    """ Mutation Cliente"""
+    type Mutation {
+        """ Te permite crear nuevos users"""
+        # NombreResolver(Input con datos) : Valor que retorna
+        crearCliente(input: ClienteInput): Clientes
+        # Actualizar Clientes
+        editarCliente(input: ClienteInput): Clientes
+        # Eliminar Clientes
+        eliminarCliente(id: ID!) : String
+    }
+
+
+
+
+
+
+    

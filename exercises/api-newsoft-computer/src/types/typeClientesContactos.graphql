@@ -1,0 +1,81 @@
+# ==================================================================================================================
+    # modelClientesContactosSchema
+    # ==================================================================================================================
+
+    # ==================== TYPES (CONSULTAS) ================
+
+    """ Type Clientes (Consultas Clientes)"""
+    type ClienteContactos {
+        id: ID
+        created_at: String
+        documenttype: String
+        document: String
+        name: String
+        lastname: String
+        phones: String
+        emails: String
+        address: String
+        state: String
+        country: String
+    }
+
+    
+     # ==================== ARRAYS ================
+    """ Array para emails """
+    type Email {
+        email1: String
+    }
+
+
+    # ==================== CATEGORIAS ================
+
+
+     
+    """ ============== CONSULTAS USERS ============== """
+    type Query {
+        # Consultar todos los clienteContactoss
+        getClienteContactos: [ClienteContactos]
+        # Consultar Users con un limite de registros
+        getClienteContactosLimite(limite: Int): [ClienteContactos]
+        # Consultar un solo ClienteContactos desde su ID
+        getClienteContactoID(id: ID) : ClienteContactos
+    }
+
+
+
+
+    # ============== MUTATIONS (CREAR. ACTUALIZAR, ELIMINAR) ==============
+
+    """ ClienteContactos Input: Campos para crear clienteContactos nuevo"""
+    input ClienteContactosInput {
+        id: ID
+        created_at: String
+        documenttype: String
+        document: String
+        name: String
+        lastname: String
+        phones: String
+        emails: String
+        address: String
+        state: String
+        country: String
+    }
+
+
+    # ==================== ARRAYS ================
+    """ Array para emails """
+    input EmailInput {
+        email1: String
+    }
+
+    
+    """ Mutation ClienteContactos"""
+    type Mutation {
+        """ Te permite crear nuevos users"""
+        # NombreResolver(Input con datos) : Valor que retorna
+        crearClienteContactos(input: ClienteContactosInput): ClienteContactos
+        # Actualizar ClienteContactoss
+        editarClienteContactos(input: ClienteContactosInput): ClienteContactos
+        # Eliminar ClienteContactoss
+        eliminarClienteContactos(id: ID!) : String
+    }

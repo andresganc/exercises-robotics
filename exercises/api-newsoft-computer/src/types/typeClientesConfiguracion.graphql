@@ -1,0 +1,77 @@
+# ==================================================================================================================
+    # modelClientesConfiguracionSchema
+    # ==================================================================================================================
+
+    # ==================== TYPES (CONSULTAS) ================
+
+    """ Type Clientes (Consultas Clientes)"""
+    type ClienteConfiguracion {
+        id: ID
+        created_at: String
+        currency: String
+        language: String
+        payment_terms: String
+        notes: String
+        notes_private: String
+        company_size: String
+        industry: String
+    }
+
+    
+     # ==================== ARRAYS ================
+    """ Array para emails """
+    type Email {
+        email1: String
+    }
+
+
+    # ==================== CATEGORIAS ================
+
+
+     
+    """ ============== CONSULTAS USERS ============== """
+    type Query {
+        # Consultar todos los clientes
+        getClientesConfiguracion: [ClienteConfiguracion]
+        # Consultar Users con un limite de registros
+        getClientesConfiguracionLimite(limite: Int): [ClienteConfiguracion]
+        # Consultar un solo Cliente desde su ID
+        getClienteConfiguracionID(id: ID) : ClienteConfiguracion
+    }
+
+
+
+
+    # ============== MUTATIONS (CREAR. ACTUALIZAR, ELIMINAR) ==============
+
+    """ Cliente Input: Campos para crear cliente nuevo"""
+    input ClienteConfiguracionInput {
+        id: ID
+        created_at: String
+        currency: String
+        language: String
+        payment_terms: String
+        notes: String
+        notes_private: String
+        company_size: String
+        industry: String
+    }
+
+
+    # ==================== ARRAYS ================
+    """ Array para emails """
+    input EmailInput {
+        email1: String
+    }
+
+    
+    """ Mutation Cliente"""
+    type Mutation {
+        """ Te permite crear nuevos users"""
+        # NombreResolver(Input con datos) : Valor que retorna
+        crearClienteConfiguracion(input: ClienteConfiguracionInput): ClienteConfiguracion
+        # Actualizar Clientes
+        editarClienteConfiguracion(input: ClienteConfiguracionInput): ClienteConfiguracion
+        # Eliminar Clientes
+        eliminarClienteConfiguracion(id: ID!) : String
+    }
