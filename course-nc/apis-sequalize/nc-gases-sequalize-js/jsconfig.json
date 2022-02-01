@@ -1,0 +1,28 @@
+
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@connections/*": ["src/connections/*"],
+      "@modules/*": ["src/modules/*"],
+      "@module-cylinders/*": ["src/modules-module-cylinders/*"],
+      "@module-clients/*": ["src/modules-module-clients/*"],
+    },
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "decorators": "true"
+  },
+  "exclude": ["node_modules"],
+  "include": ["next-env.d.ts", "**/*.js",]
+}
+
